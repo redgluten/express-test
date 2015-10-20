@@ -1,3 +1,4 @@
 node_modules
 conf/dbCredentials.json
+conf/mongo.js
 npm-debug.log

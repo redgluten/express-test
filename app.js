@@ -11,6 +11,7 @@ var session      = require('express-session');
 
 var routes = require('./routes/index');
 var users  = require('./routes/users');
+var polls  = require('./routes/polls');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use(session({ secret: 'ddfgdshfsfsdvdbfbdfb', resave: true, saveUninitialize
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/polls', polls);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
