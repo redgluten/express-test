@@ -6,7 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Yo-Mama' });
 })
 .get('/login', function(req, res, next) {
-    res.render('auth/login');
+    res.render('auth/login', { title: 'Login' });
+})
+.post('/login', function(req, res, next) {
+    // Validate the request
+    console.log(req.body);
 });
 
 module.exports = router;

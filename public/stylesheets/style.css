@@ -31,3 +31,9 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+footer {
+  border-top: 1px dotted gray;
+  padding-top: 2rem;
+  margin-top: 4rem;
+}
