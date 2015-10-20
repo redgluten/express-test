@@ -16,7 +16,11 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">Login</a></li>
+                {{#if identity }}
+                    <li><a href="/user/profile">{{ identity.name }}</a></li>
+                {{else }}
+                    <li><a href="/login">Login</a></li>
+                {{/if}}
             </ul>
         </div>
     </div>

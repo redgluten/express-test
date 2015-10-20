@@ -4,7 +4,11 @@ var db      = require('../lib/db');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Yo-Mama' });
+  res.render('index', {
+    title: 'Yo-Mama',
+    auth: req.session.auth,
+    identity: req.session.identity
+  });
 })
 .get('/login', function(req, res, next) {
   res.render('auth/login', { title: 'Login' });
@@ -28,21 +32,34 @@ router.get('/', function(req, res, next) {
     // DB connect
     connection = db.connect();
 
-    query = 'SELECT COUNT(*) AS auth FROM user WHERE ' +
-                'email = "' + req.body.email + '" ' +
-                'AND password = "' + req.body.password + '";';
-
     // authentication
-    connection.query(query, function(err, results) {
-      if (err) throw err;
+    connection.query('SELECT COUNT(*) AS auth FROM user WHERE ' +
+                'email = "' + req.body.email + '" ' +
+                'AND password = "' + req.body.password + '";',
+      function(err, results) {
+        if (err) throw err;
 
-      if (results[0].auth == 1) {
-        res.redirect('/');
-      } else {
-        res.render('auth/login', { title: 'Login', errors: { "msg": "DB Error" } });
-      }
-    });
-  }
+        if (results[0].auth == 1) {
+          connection.query('SELECT * FROM user WHERE ' +
+                  'email = "' + req.body.email + '" ' +
+                  'AND password = "' + req.body.password + '";',
+          function(err, results) {
+            if (err) throw err;
+            req.session.identity = {
+              id: results[0].id,
+              name: results[0].name,
+              login: results[0].login,
+              email: results[0].email
+            }
+            req.session.auth = true;
+            res.redirect('/');
+          });
+        } else {
+          req.session.auth = false;
+          res.redirect('/');
+        }
+      });
+    }
 });
 
 module.exports = router;

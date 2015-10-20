@@ -7,6 +7,7 @@ var bodyParser   = require('body-parser');
 var validator    = require('express-validator');
 var hb           = require('express-handlebars');
 var formidable   = require('express-formidable');
+var session      = require('express-session');
 
 var routes = require('./routes/index');
 var users  = require('./routes/users');
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(formidable.parse());
+app.use(session({ secret: 'ddfgdshfsfsdvdbfbdfb', resave: true, saveUninitialized: true }));
 
 app.use('/', routes);
 app.use('/users', users);
