@@ -7,11 +7,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.container {
-  padding-top: 3rem;
-  min-height: 500px;
-}
-
 a {
   color: #00B7FF;
 }
