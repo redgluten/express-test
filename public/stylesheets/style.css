@@ -32,8 +32,37 @@ blockquote p {
   display: inline;
 }
 
-footer {
+blockquote footer {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.main-footer {
   border-top: 1px dotted gray;
   padding-top: 2rem;
   margin-top: 4rem;
+}
+
+.scrollup {
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    width: 39px;
+    height: 39px;
+    border-radius: 5px;
+    font-size: 20px;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    display: none;
+    background: blue;
+    z-index: 910;
+}
+.scrollup::hover {
+  background: #85bbe1;
+}
+.scrollup > i {
+    position: relative;
+    top: 5px;
+    color: white;
 }
