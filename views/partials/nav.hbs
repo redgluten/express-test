@@ -17,9 +17,10 @@
 
             <ul class="nav navbar-nav navbar-right">
                 {{#if identity }}
-                    <li><a href="/user/profile">{{ identity.name }}</a></li>
+                    <li><a href="/user/profile"><i class="fa fa-user"></i> {{ identity.name }}</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
                 {{else }}
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
                 {{/if}}
             </ul>
         </div>

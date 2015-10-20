@@ -60,6 +60,11 @@ router.get('/', function(req, res, next) {
         }
       });
     }
+})
+.get('/logout', function(req, res, next) {
+  req.session.auth     = false;
+  req.session.identity = null;
+  res.redirect('/');
 });
 
 module.exports = router;
