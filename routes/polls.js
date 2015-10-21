@@ -1,24 +1,23 @@
-var express = require('express');
-var router  = express.Router();
+var express         = require('express');
+var router          = express.Router();
+var pollsController = require('../controllers/polls');
 
 /* GET polls listing. */
-router.get('/', function(req, res, next) {
-  res.render('polls/index', { title: 'Polls' });
-});
-
-// List
-router.get('/list', function(req, res, next) {
-  // res.render('polls/index', { title: 'Polls' });
-});
+router.get('/', pollsController.index);
 
 // Show
-router.get('/polls/:polls', function(req, res, next) {
-  res.render('polls/show', { poll: req.params.polls, title: 'Poll ' });
-});
+router.get('/polls/:polls', pollsController.show);
 
 // Create
-router.get('/polls/create', function(req, res, next) {
-  res.render('polls/create', { title: 'Create a new poll' });
-});
+// router.get('/polls/create', pollsController.create);
+
+// Store
+// router.post('/polls/', pollsController.store);
+
+// Edit
+// router.post('/polls/:polls/edit', pollsController.edit);
+
+// Update
+// router.post('/polls/:polls/', pollsController.update);
 
 module.exports = router;
