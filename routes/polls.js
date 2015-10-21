@@ -5,19 +5,19 @@ var pollsController = require('../controllers/polls');
 /* GET polls listing. */
 router.get('/', pollsController.index);
 
-// Show
-router.get('/polls/:polls', pollsController.show);
-
 // Create
-// router.get('/polls/create', pollsController.create);
+router.get('/create', pollsController.create);
+
+// Show
+router.get('/:id', pollsController.show);
 
 // Store
-// router.post('/polls/', pollsController.store);
+router.post('/', pollsController.store);
 
 // Edit
-// router.post('/polls/:polls/edit', pollsController.edit);
+// router.post('/:polls/edit', pollsController.edit);
 
 // Update
-// router.post('/polls/:polls/', pollsController.update);
+// router.post('/:polls/', pollsController.update);
 
 module.exports = router;
